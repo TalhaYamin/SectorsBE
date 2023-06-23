@@ -21,6 +21,9 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('Connected to MongoDB'))
     .catch(error => console.error(error));
 
+app.use('/test', (req, res) => {
+    return res.json("hello")
+});
 
 app.use('/', userRoutes);
 app.use('/', sectorsRoutes);
