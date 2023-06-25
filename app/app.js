@@ -1,9 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const sectorsRoutes = require('./routes/sectorRoutes');
 const userRoutes = require('./routes/userRoutes');
-const cors = require('cors');
-
 
 require('dotenv').config();
 
@@ -12,17 +11,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
-
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose
+    .connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then(() => console.log('Connected to MongoDB'))
-    .catch(error => console.error(error));
+    .catch((error) => console.error(error));
 
 app.use('/test', (req, res) => {
-    return res.json("hello")
+    return res.json('hello');
 });
 
 app.use('/', userRoutes);
