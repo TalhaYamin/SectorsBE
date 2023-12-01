@@ -1,18 +1,12 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    Name: {
+
+    text: {
         type: String,
-        required: true
+        required: true,
     },
-    Sector: {
-        type: String,
-        required: true
-    },
-    AgreeToTerms: {
-        type: Boolean,
-        required: true
-    }
+
 });
 
 module.exports = mongoose.model('User', userSchema);
